@@ -4,6 +4,12 @@ public class BaseAdress
 {
     public byte[] Octets { get; protected set; }
     
+    public string OctetsToString()
+    {
+
+        return string.Join(".", Octets);
+    }
+    
     internal byte[] OctetsStringToBytesArray(string ip)
     {
         var splitted = ip.Split('.');

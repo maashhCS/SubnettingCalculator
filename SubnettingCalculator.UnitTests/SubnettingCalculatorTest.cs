@@ -10,7 +10,7 @@ public class SubnettingCalculatorTest
     [TestCaseSource(typeof(TestCases), nameof(TestCases.TestOctets))]
     public void ConvertOctets(byte[] octets, byte[] expected)
     {
-        var result = new IpAdress(octets);
+        var result = new IPAddress(octets);
         
         Assert.That(result.Octets, Is.EqualTo(expected));
     }
@@ -43,14 +43,14 @@ public class SubnettingCalculatorTest
         {
             Assert.DoesNotThrow(() =>
             {
-                new IpAdress(ip);
+                new IPAddress(ip);
             });
         }
         else
         {
             Assert.Throws<ArgumentException>(() =>
             {
-                new IpAdress(ip);
+                new IPAddress(ip);
             });
         }
     }

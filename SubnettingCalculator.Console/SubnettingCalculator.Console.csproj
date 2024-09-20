@@ -8,4 +8,8 @@
         <RootNamespace>SubnettingCalculator</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SubnettingCalculator.Models\SubnettingCalculator.Models.csproj" />
+    </ItemGroup>
+
 </Project>

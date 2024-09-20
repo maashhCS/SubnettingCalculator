@@ -60,22 +60,4 @@ public class TestCases
             yield return new TestCaseData("123.456.789.0", null).SetName("Casee 15");
         }
     }
-
-    public static IEnumerable<TestCaseData> TestIpIncrease
-    {
-        get
-        {
-            yield return new TestCaseData("1.1.1.1", true).SetName("Case 1");
-            yield return new TestCaseData("1.1.1.255", false).SetName("Case 2");
-        }
-    }
-    
-    public static IEnumerable<TestCaseData> TestIpDecrease
-    {
-        get
-        {
-            yield return new TestCaseData("1.1.1.1", true).SetName("Case 1");
-            yield return new TestCaseData("1.1.1.255", false).SetName("Case 2");
-        }
-    }
 }
