@@ -38,7 +38,16 @@ public class Network
 
     private byte[] CalculateWildcardMask(int prefix)
     {
-        var subNetMask = CalculateSubnetMask(prefix);
+        byte[] subNetMask;
+        if (SubnetMask == null)
+        {
+            subNetMask = CalculateSubnetMask(prefix);
+        }
+        else
+        {
+            subNetMask = SubnetMask.Octets;
+        }
+
         var wildcardMask = new byte[4];
         for (var i = 0; i < wildcardMask.Length; i++)
         {
@@ -74,7 +83,7 @@ public class Network
         var maskParts = subnetMask.Split('.');
         var networkBytes = new byte[4];
 
-        for (int i = 0; i < 4; i++)
+        for (var i = 0; i < 4; i++)
         {
             var ipByte = byte.Parse(ipParts[i]);
             var maskByte = byte.Parse(maskParts[i]);
