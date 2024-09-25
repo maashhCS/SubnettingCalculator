@@ -7,17 +7,17 @@ public class Network
         CalculateAddresses(ip, prefix);
     }
 
-    public IPAddress IPAddress { get; set; }
-    public IPAddress WildcardMask { get; set; }
-    public IPAddress SubnetMask { get; set; }
-    public IPAddress NetworkAddress { get; set; }
-    public IPAddress BroadcastAddress { get; set; }
-    public IPAddress FirstUsableAddress { get; set; }
-    public IPAddress LastUsableAddress { get; set; }
-    public int Prefix { get; set; }
-    public int HostBits { get; set; }
-    public int Subnets { get; set; }
-    public int Hosts { get; set; }
+    public IPAddress IPAddress { get; private set; }
+    public IPAddress WildcardMask { get; private set; }
+    public IPAddress SubnetMask { get; private set; }
+    public IPAddress NetworkAddress { get; private set; }
+    public IPAddress BroadcastAddress { get; private set; }
+    public IPAddress FirstUsableAddress { get; private set; }
+    public IPAddress LastUsableAddress { get; private set; }
+    public int Prefix { get; private set; }
+    public int HostBits { get; private set; }
+    public int Subnets { get; private set; }
+    public int Hosts { get; private set; }
 
     private Network CalculateAddresses(string ip, int prefix)
     {
@@ -28,8 +28,8 @@ public class Network
         Hosts = (int)Math.Pow(2, HostBits) - 2;
         SubnetMask = new IPAddress(CalculateSubnetMask(prefix));
         WildcardMask = new IPAddress(CalculateWildcardMask(prefix));
-        NetworkAddress = CalculateNetworkAddress(ip, SubnetMask.OctetsToString());
-        // wildcard metho
+        NetworkAddress = CalculateNetworkAddress(ip, SubnetMask.ToString());
+        // wildcard method
         BroadcastAddress = NetworkAddress | WildcardMask.Octets;
         FirstUsableAddress = NetworkAddress + 1;
         LastUsableAddress = BroadcastAddress - 1;

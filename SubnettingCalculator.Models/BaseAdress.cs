@@ -4,9 +4,8 @@ public class BaseAdress
 {
     public byte[] Octets { get; protected set; }
     
-    public string OctetsToString()
+    public override string ToString()
     {
-
         return string.Join(".", Octets);
     }
     
